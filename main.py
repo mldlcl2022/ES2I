@@ -13,6 +13,7 @@ import torch.optim as optim
 from util.dataset import make_numpy
 from util.dataset import make_dataset, make_dataloader
 from util.evaluate import eval
+from util.earlystopping import EarlyStopping
 
 # parser
 parser = argparse.ArgumentParser(description= '')
@@ -44,6 +45,10 @@ parser.add_argument('--fine-tuning',
                     default= 'linear probing',
                     type= str,
                     help= 'Type of task. Options: "linear probing", "fine tuning"')
+parser.add_argument('--early-stopping',
+                    default= True,
+                    type= bool,
+                    help= 'Whether to use early stopping(patience = 5).')
 parser.add_argument('--learning-rate',
                     default= 1e-3,
                     type= float)
@@ -129,7 +134,7 @@ def main() :
                 if 'heads.head' not in l : p.requires_grad = False
     
     print('\n★ model setting : Done ★')
-    print(model.__class__.__name__)
+    print(model.__class__.__name__) 
     cnt = sum(1 for l,p in model.named_parameters() if p.requires_grad)
     if cnt > 10 : print('full fine tuning setting : Done')
     else : print('linear probing setting : Done')
@@ -146,6 +151,11 @@ def main() :
     valid_losses = []
     best_f1 = float('-inf')
     best_model_path = 'best_model.pth'
+
+    # early stopping
+    if args.early_stopping : 
+        early_stopping = EarlyStopping(patience=5, delta=0.001)
+        print('\n★ early stopping : Done ★')
     
     for epoch in range(args.epochs) :
         s = time.time()
@@ -177,6 +187,14 @@ def main() :
                 
                 valid_loss += loss.item()
         valid_losses.append(valid_loss / len(validloader))
+
+        # early stopping
+        if args.early_stopping :
+            average_valid_loss = valid_loss / len(validloader)
+            early_stopping(average_valid_loss)
+            if early_stopping.early_stop:
+                print(f"Early stopping at epoch {epoch + 1}")
+                break
         
         validscore = eval(validloader, model, device)
         if best_f1 < validscore['f1'] :
