@@ -43,9 +43,9 @@ parser.add_argument('--model',
                     type= str,
                     help= 'Model name to use. Options: "resnet18", "resnet34", "resnet50", "vit"')
 parser.add_argument('--fine-tuning',
-                    default= 'linear probing',
+                    default= 'linear_probing',
                     type= str,
-                    help= 'Type of task. Options: "linear probing", "fine tuning"')
+                    help= 'Type of task. Options: "linear_probing", "fine_tuning"')
 parser.add_argument('--early-stopping',
                     default= True,
                     type= bool,
