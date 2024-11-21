@@ -9,6 +9,7 @@ import torchvision.transforms as transforms
 from torchvision import models
 import torch.nn as nn
 import torch.optim as optim
+import timm
 
 from util.dataset import make_numpy
 from util.dataset import make_dataset, make_dataloader
@@ -118,12 +119,12 @@ def main() :
     elif args.model == 'resnet50' :
         model = models.resnet50(weights= models.ResNet50_Weights.IMAGENET1K_V1)
     elif args.model == 'vit' :
-        model = models.vit_b_16(weights= models.ViT_B_16_Weights.IMAGENET1K_V1)
+        model = timm.create_model('vit_base_patch16_224', pretrained=True)
     
     if 'resnet' in args.model :
         model.fc = nn.Sequential(nn.Linear(model.fc.in_features, y_train.shape[1]), nn.Sigmoid())
     else :
-        model.heads.head = nn.Sequential(nn.Linear(model.heads.head.in_features, y_train.shape[1]), nn.Sigmoid())
+        model.head = nn.Sequential(nn.Linear(model.head.in_features, y_train.shape[1]), nn.Sigmoid())
 
     # fine tuning
     if args.fine_tuning == 'linear_probing' :
@@ -132,7 +133,7 @@ def main() :
                 if 'fc' not in l : p.requires_grad = False
         elif 'vit' in args.model :
             for l,p in model.named_parameters() :
-                if 'heads.head' not in l : p.requires_grad = False
+                if 'head' not in l : p.requires_grad = False
     
     print('\n★ model setting : Done ★')
     print(model.__class__.__name__) 
