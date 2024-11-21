@@ -24,9 +24,10 @@ parser.add_argument('--device',
                     default= 'cuda',
                     type= str)
 parser.add_argument('--leads',
-                    default= [1,2,5],
-                    type= list,
-                    help= 'List of ECG lead numbers to use. Up to 3 leads can be selected when using offset image shapes.')
+                    default=[1, 2, 5],
+                    type=int,
+                    nargs='+',
+                    help='List of up to 3 ECG lead numbers to use (space-separated, e.g. 1 2 5).')
 parser.add_argument('--image-shape',
                     default= 'offsetO_gridX',
                     type= str,
