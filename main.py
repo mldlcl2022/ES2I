@@ -126,7 +126,7 @@ def main() :
         model.heads.head = nn.Sequential(nn.Linear(model.heads.head.in_features, y_train.shape[1]), nn.Sigmoid())
 
     # fine tuning
-    if args.fine_tuning == 'linear probing' :
+    if args.fine_tuning == 'linear_probing' :
         if 'resnet' in args.model :
             for l,p in model.named_parameters() :
                 if 'fc' not in l : p.requires_grad = False
