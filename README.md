@@ -13,5 +13,5 @@ Paper:
 * timm
 
 ### Training
-'''python
+'''python'''
 !python main.py --signal-path 
