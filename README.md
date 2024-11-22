@@ -2,7 +2,7 @@
 This is an official guide for transforming ECG signals into simple images to image-based pre-trained models.
 
 Paper: 
-
+---
 ### Requirements
 * python
 * numpy
