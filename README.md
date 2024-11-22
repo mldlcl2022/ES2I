@@ -13,6 +13,6 @@ Paper:
 * timm
 
 ### Training
-'''
+'''python
 !python main.py --signal-path 
 '''
