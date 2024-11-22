@@ -25,10 +25,10 @@ parser.add_argument('--device',
                     default= 'cuda',
                     type= str)
 parser.add_argument('--leads',
-                    default=[1, 2, 5],
-                    type=int,
-                    nargs='+',
-                    help='List of up to 3 ECG lead numbers to use (space-separated, e.g. 1 2 5).')
+                    default= [1, 2, 5],
+                    type= int,
+                    nargs= '+',
+                    help= 'List of up to 3 ECG lead numbers to use (space-separated, e.g. 1 2 5).')
 parser.add_argument('--image-shape',
                     default= 'offsetO_gridX',
                     type= str,
@@ -50,7 +50,11 @@ parser.add_argument('--fine-tuning',
 parser.add_argument('--early-stopping',
                     default= True,
                     type= bool,
-                    help= 'Whether to use early stopping(patience = 5).')
+                    help= 'Whether to use early stopping.')
+parser.add_argument('--patience',
+                    default= 30,
+                    type= int,
+                    help= 'patience for early stopping.')
 parser.add_argument('--learning-rate',
                     default= 1e-3,
                     type= float)
@@ -156,8 +160,8 @@ def main() :
 
     # early stopping
     if args.early_stopping : 
-        early_stopping = EarlyStopping(patience=5, delta=0.001)
-        print('\n★ early stopping : Done ★')
+        early_stopping = EarlyStopping(patience= args.patience, delta= 0.001)
+        print('\n★ early stopping : Done ★\n')
     
     for epoch in range(args.epochs) :
         s = time.time()
@@ -214,7 +218,7 @@ def main() :
     # evaluate testset
     model.load_state_dict(torch.load(best_model_path))
     testscore = eval(testloader, model, device)
-    print(f"\nTest AUC : {testscore['auc']:.4f}, Test F1 : {testscore['f1']:.4f}")
+    print(f"\nTest AUC : {testscore['auc']:.4f}, Test F1 : {testscore['f1']:.4f}\n")
     print('\n★ All process : Done ★')
 
 def seed_setting(seed) :
