@@ -12,4 +12,6 @@ Paper:
 * torchvision
 * timm
 
-### 
+### Training
+'''
+!python main.py --signal-path 
