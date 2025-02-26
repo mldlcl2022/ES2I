@@ -15,4 +15,5 @@ Paper:
 ### Training
 ```python
 !python main.py --signal-path {path for raw signal data}
+
 ```
