@@ -3,8 +3,6 @@ This is an official guide for transforming ECG signals into simple images to ima
 
 paper: https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12041844
 
-Paper: [KSC2024] Effectiveness of Transforming ECG Signal into Image with Image-Based Pre-trained Model
----
 ### Requirements
 * python
 * numpy
