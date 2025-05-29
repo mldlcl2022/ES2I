@@ -1,7 +1,7 @@
 # ES2I: Ecg Signal inTo Image
 This is an official guide for transforming ECG signals into simple images to image-based pre-trained models.
 
-Paper: 
+Paper: [KSC2024] Effectiveness of Transforming ECG Signal into Image with Image-Based Pre-trained Model
 ---
 ### Requirements
 * python
