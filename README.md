@@ -4,13 +4,13 @@ This is an official guide for transforming ECG signals into simple images to ima
 paper: https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12041844
 
 ### Requirements
-* python
-* numpy
-* pandas
-* wfdb
-* torch
-* torchvision
-* timm
+* python 3.10.8
+* numpy 1.26.4
+* pandas 2.2.3
+* wfdb 4.3.0
+* torch 2.6.0+cu124
+* torchvision 0.14.1
+* timm 1.0.15
 
 ### Training
 ```python
