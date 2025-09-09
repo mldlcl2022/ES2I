@@ -1,0 +1,4 @@
+extract ECG features
+- interval feature 10, hrv feature 10
+- preprocessing : dropna, standard scaler
+- data split : train:valid:test = 7:1.5:1.5
