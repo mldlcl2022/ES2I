@@ -1,7 +1,7 @@
 # ES2I: Ecg Signals inTo Images
 This is an official guide for transforming ECG signals into simple images to image-based pre-trained models.
 
-Paper: [이미지 기반 사전 학습 모델을 활용한 심전도 신호의 이미지화 효과](https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12041844)
+Paper: 이미지 기반 사전 학습 모델을 활용한 심전도 신호의 이미지화 효과[Link](https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12041844)
 ---
 ### Environments
 * Python: 3.12.3
