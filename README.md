@@ -1,9 +1,9 @@
 # ES2I: Ecg Signals inTo Images
-This repository contains the official implementation of the paper "이미지 기반 사전 학습 모델을 활용한 심전도 신호의 이미지화 효과".
+This repository contains the official implementation of the paper "Effectiveness of Transforming ECG Signal into Image with Image-Based Pre-trained Model".
 
 The paper was presented as an oral presentation at the Korea Software Congress 2024 (KSC 2024), a major academic conference in computer science and software engineering organized by the Korean Institute of Information Scientists and Engineers (KIISE). It was honored with the Outstanding Presentation Paper Award (우수발표논문상).
 
-Paper: [이미지 기반 사전 학습 모델을 활용한 심전도 신호의 이미지화 효과](https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12041844)
+Paper: [Effectiveness of Transforming ECG Signal into Image with Image-Based Pre-trained Model](https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12041844)
 
 ## Environments
 - Python: 3.12.3
